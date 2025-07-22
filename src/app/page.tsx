@@ -37,7 +37,7 @@ const projects: Project[] = [
     description: 'Contributed to the development of the official marketing and services portfolio for Atologist Infotech. This project showcases the company\'s expertise and services, featuring a clean, professional design built with Next.js and Material-UI for a polished user experience.',
     image: 'https://placehold.co/600x400.png',
     tags: ['Next.js', 'MUI', 'Redux', 'Firebase'],
-    liveUrl: 'https://atologistinfotech.com/',
+    liveUrl: 'https://atologist-website.web.app/',
     repoUrl: '#',
     aiHint: 'corporate website technology'
   },
