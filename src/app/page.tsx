@@ -10,6 +10,7 @@ import { Experience } from '@/components/experience';
 import { ContactForm } from '@/components/contact-form';
 import { Skills } from '@/components/skills';
 import { AiWelcome } from '@/components/ai-welcome';
+import { Header } from '@/components/header';
 
 const InteractiveScene = dynamic(() => import('@/components/3d/interactive-scene').then(mod => mod.InteractiveScene), {
   ssr: false,
@@ -117,6 +118,7 @@ export default function Home() {
 
   return (
     <div className="relative min-h-screen w-full bg-background font-body text-foreground">
+      <Header />
       <InteractiveScene projects={projects} onProjectClick={handleProjectClick} />
       <AiWelcome />
       
