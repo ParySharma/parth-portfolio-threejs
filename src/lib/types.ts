@@ -2,7 +2,9 @@ export interface Project {
   id: number;
   title: string;
   description: string;
-  tech: string[];
+  tags: string[];
   image: string;
-  hint: string;
+  aiHint: string;
+  liveUrl?: string;
+  repoUrl?: string;
 }

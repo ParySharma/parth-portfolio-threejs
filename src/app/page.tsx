@@ -20,11 +20,56 @@ const InteractiveScene = dynamic(() => import('@/components/3d/interactive-scene
 });
 
 const projects: Project[] = [
-  { id: 1, title: 'Project Alpha', description: 'A cutting-edge web application that leverages server-side rendering and a component-based architecture to deliver a fast and responsive user experience.', tech: ['React', 'Node.js', 'GraphQL'], image: 'https://placehold.co/600x400.png', hint: 'abstract technology' },
-  { id: 2, title: 'Project Beta', description: 'An e-commerce platform with a unique, minimalist design, focusing on user-friendly navigation and a seamless checkout process. Built with modern frontend technologies.', tech: ['Next.js', 'TypeScript', 'PostgreSQL'], image: 'https://placehold.co/600x400.png', hint: 'minimalist design' },
-  { id: 3, title: 'Project Gamma', description: 'A real-time data visualization tool that transforms complex datasets into interactive and understandable charts and graphs. Perfect for business intelligence.', tech: ['D3.js', 'Firebase', 'Svelte'], image: 'https://placehold.co/600x400.png', hint: 'data visualization' },
-  { id: 4, title: 'Project Delta', description: 'A collaborative content management system that allows teams to create, edit, and publish content with a powerful and intuitive editor.', tech: ['Vue.js', 'Tailwind CSS', 'Supabase'], image: 'https://placehold.co/600x400.png', hint: 'collaboration tool' },
-  { id: 5, title: 'Project Epsilon', description: 'A mobile-first social networking app designed for communities, featuring real-time chat, event scheduling, and media sharing capabilities.', tech: ['React Native', 'Firebase', 'Redux'], image: 'https://placehold.co/600x400.png', hint: 'social network' },
+    {
+    id: 1,
+    title: 'Zomo Health - Health Management Platform',
+    description: 'Developed a comprehensive health management platform for Zomo Health, designed to redefine personalized care. This application provides innovative solutions for users to manage their health, connect with professionals, and access resources, fostering a healthier and happier community.',
+    image: 'https://placehold.co/600x400.png',
+    tags: ['Next.js', 'MUI', 'Redux', 'axios', 'Firebase'],
+    liveUrl: 'https://www.zomohealth.com/',
+    repoUrl: '#',
+    aiHint: 'medical dashboard chart'
+  },
+  {
+    id: 2,
+    title: 'Atologist Infotech - Marketing Portfolio',
+    description: 'Contributed to the development of the official marketing and services portfolio for Atologist Infotech. This project showcases the company\'s expertise and services, featuring a clean, professional design built with Next.js and Material-UI for a polished user experience.',
+    image: 'https://placehold.co/600x400.png',
+    tags: ['Next.js', 'MUI', 'Redux', 'Firebase'],
+    liveUrl: 'https://atologistinfotech.com/',
+    repoUrl: '#',
+    aiHint: 'corporate website technology'
+  },
+  {
+    id: 3,
+    title: 'SmartX - Portfolio Website',
+    description: 'A demo portfolio website created to showcase modern web development techniques. Built with Next.js and Material-UI, this project demonstrates a responsive and visually appealing layout for presenting projects and skills, serving as a template for personal branding.',
+    image: 'https://placehold.co/600x400.png',
+    tags: ['Next.js', 'MUI', 'Netlify'],
+    liveUrl: 'https://smartxnew.netlify.app/home',
+    repoUrl: 'https://github.com/ParySharma/smartx',
+    aiHint: 'modern portfolio design'
+  },
+   {
+    id: 4,
+    title: 'Parth Portfolio',
+    description: 'My personal developer portfolio, which you are currently viewing. Built from the ground up with Next.js, ShadCN UI, and Tailwind CSS to create an interactive and visually engaging showcase of my skills, experience, and projects, including 3D animations and GenAI features.',
+    image: 'https://placehold.co/600x400.png',
+    tags: ['Next.js', 'React', 'ShadCN UI', 'Tailwind CSS', 'GenAI'],
+    liveUrl: 'https://parthsharma-portfolio.netlify.app/',
+    repoUrl: 'https://github.com/ParySharma/myPortfolio',
+    aiHint: 'developer portfolio project'
+  },
+  {
+    id: 5,
+    title: 'Parth Portfolio Old - Portfolio Site',
+    description: 'An earlier version of my personal portfolio. This project was built to showcase my skills at the time using Next.js and Material-UI, demonstrating my foundational expertise in modern frontend technologies.',
+    image: 'https://placehold.co/600x400.png',
+    tags: ['Next.js', 'MUI'],
+    liveUrl: 'https://parysharma.netlify.app/',
+    repoUrl: 'https://github.com/ParySharma/parth_pofolio',
+    aiHint: 'archived portfolio design'
+  },
 ];
 
 export default function Home() {
