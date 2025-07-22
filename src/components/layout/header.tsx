@@ -9,7 +9,7 @@ interface HeaderProps {
 
 export function Header({ onContactClick }: HeaderProps) {
     return (
-        <header className="absolute top-0 left-0 right-0 z-20 p-4 sm:p-6 flex justify-between items-center">
+        <header className="fixed top-0 left-0 right-0 z-50 p-4 sm:p-6 flex justify-between items-center">
             <h1 className="text-xl sm:text-2xl font-headline font-bold flex items-center gap-2 text-primary-foreground select-none">
                 <Sparkles className="w-6 h-6 sm:w-8 sm:h-8 text-accent animate-pulse" />
                 <span>Motion Portfolio</span>
@@ -22,3 +22,5 @@ export function Header({ onContactClick }: HeaderProps) {
         </header>
     );
 }
+
+    

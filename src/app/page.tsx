@@ -1,6 +1,6 @@
 "use client";
 
-import type { Project } from '@/lib/types';
+import type { Project, Experience as ExperienceType } from '@/lib/types';
 import React, { useState } from 'react';
 import dynamic from 'next/dynamic';
 import { Loader2 as Loader } from 'lucide-react';
@@ -8,11 +8,12 @@ import { Loader2 as Loader } from 'lucide-react';
 import { Header } from '@/components/layout/header';
 import { ProjectDetailsDialog } from '@/components/project-details-dialog';
 import { ContactDialog } from '@/components/contact-dialog';
+import { Experience } from '@/components/experience';
 
 const InteractiveScene = dynamic(() => import('@/components/3d/interactive-scene').then(mod => mod.InteractiveScene), {
   ssr: false,
   loading: () => (
-    <div className="absolute inset-0 flex flex-col items-center justify-center bg-background text-foreground">
+    <div className="fixed inset-0 flex flex-col items-center justify-center bg-background text-foreground z-0">
       <Loader className="h-12 w-12 animate-spin text-accent" />
       <p className="mt-4 text-lg font-headline">Loading 3D Universe...</p>
     </div>
@@ -72,6 +73,22 @@ const projects: Project[] = [
   },
 ];
 
+const experiences: ExperienceType[] = [
+  {
+    company: 'Zomo Health',
+    role: 'SDE-2 (Frontend)',
+    period: 'Oct 2023 - Present',
+    description: 'Leading frontend development for a patient-centric health management platform. Architecting and implementing features using Next.js, Material-UI, and Redux. Collaborating with cross-functional teams to deliver a seamless user experience.',
+  },
+  {
+    company: 'Atologist Infotech',
+    role: 'React JS Developer',
+    period: 'Aug 2021 - Oct 2023',
+    description: 'Developed and maintained various client websites and internal projects using React, Next.js, and related technologies. Contributed to UI/UX design and implementation, ensuring high performance and responsiveness.',
+  },
+];
+
+
 export default function Home() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [isContactOpen, setContactOpen] = useState(false);
@@ -85,10 +102,23 @@ export default function Home() {
   }
 
   return (
-    <div className="relative h-screen w-screen overflow-hidden bg-background font-body text-foreground">
+    <div className="relative min-h-screen w-full bg-background font-body text-foreground">
       <InteractiveScene projects={projects} onProjectClick={handleProjectClick} />
       
       <Header onContactClick={handleContactOpen} />
+      
+      <main className="relative z-10">
+        <section id="projects" className="h-screen flex items-center justify-center flex-col">
+          <div className="text-center">
+            <h1 className="text-4xl md:text-6xl font-headline font-bold text-primary-foreground mb-4">My Projects</h1>
+            <p className="text-lg md:text-xl text-muted-foreground">Click on the floating projects to learn more.</p>
+          </div>
+        </section>
+        
+        <section id="experience" className="py-20 bg-background/80 backdrop-blur-sm">
+          <Experience experiences={experiences} />
+        </section>
+      </main>
       
       <ProjectDetailsDialog
         project={selectedProject}
@@ -100,3 +130,5 @@ export default function Home() {
     </div>
   );
 }
+
+    

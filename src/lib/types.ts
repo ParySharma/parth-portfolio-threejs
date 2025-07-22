@@ -8,3 +8,12 @@ export interface Project {
   liveUrl?: string;
   repoUrl?: string;
 }
+
+export interface Experience {
+  company: string;
+  role: string;
+  period: string;
+  description: string;
+}
+
+    

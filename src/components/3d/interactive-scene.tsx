@@ -173,5 +173,7 @@ export function InteractiveScene({ projects, onProjectClick }: InteractiveSceneP
     };
   }, [projects, onProjectClick]);
 
-  return <div ref={mountRef} className="absolute inset-0 z-0" />;
+  return <div ref={mountRef} className="fixed inset-0 z-0" />;
 }
+
+    
