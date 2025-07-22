@@ -46,7 +46,7 @@ export function InteractiveScene({ projects, onProjectClick }: InteractiveSceneP
 
     // Projects
     const textureLoader = new THREE.TextureLoader();
-    textureLoader.setCrossOrigin('anonymous');
+    textureLoader.setCrossOrigin("anonymous");
     const geometry = new THREE.PlaneGeometry(3, 2);
     projects.forEach((project, i) => {
       const texture = textureLoader.load(project.image);
