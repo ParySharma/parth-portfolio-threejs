@@ -68,13 +68,6 @@ export function Header() {
     getGreeting();
   }, []);
 
-  const scrollToSection = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
   return (
     <motion.header
       initial={{ y: -100 }}
@@ -101,17 +94,6 @@ export function Header() {
             AI-Generated Welcome
           </p>
         </div>
-        <nav className="hidden md:flex items-center space-x-6">
-          {['experience', 'skills', 'contact'].map((item) => (
-            <button
-              key={item}
-              onClick={() => scrollToSection(item)}
-              className="font-semibold text-primary-foreground hover:text-accent transition-colors duration-200 capitalize"
-            >
-              {item}
-            </button>
-          ))}
-        </nav>
       </div>
     </motion.header>
   );
