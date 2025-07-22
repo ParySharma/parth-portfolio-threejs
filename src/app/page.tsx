@@ -45,7 +45,7 @@ const projects: Project[] = [
     id: 3,
     title: 'SmartX - Portfolio Website',
     description: 'A demo portfolio website created to showcase modern web development techniques. Built with Next.js and Material-UI, this project demonstrates a responsive and visually appealing layout for presenting projects and skills, serving as a template for personal branding.',
-    image: 'https://placehold.co/600x400.png',
+    image: '/images/projects/smart-x.png',
     tags: ['Next.js', 'MUI', 'Netlify'],
     liveUrl: 'https://smartxnew.netlify.app/home',
     repoUrl: 'https://github.com/ParySharma/smartx',
