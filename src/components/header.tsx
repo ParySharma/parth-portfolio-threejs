@@ -89,10 +89,6 @@ export function Header() {
             )}
             {!isTyping && <span className="text-accent animate-ping">|</span>}
           </div>
-           <p className="flex items-center text-xs text-accent font-semibold drop-shadow-md">
-            <Sparkles className="mr-2 h-3 w-3 animate-pulse" />
-            AI-Generated Welcome
-          </p>
         </div>
       </div>
     </motion.header>
