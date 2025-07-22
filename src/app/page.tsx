@@ -5,10 +5,9 @@ import React, { useState } from 'react';
 import dynamic from 'next/dynamic';
 import { Loader2 as Loader } from 'lucide-react';
 
-import { Header } from '@/components/layout/header';
 import { ProjectDetailsDialog } from '@/components/project-details-dialog';
-import { ContactDialog } from '@/components/contact-dialog';
 import { Experience } from '@/components/experience';
+import { ContactForm } from '@/components/contact-form';
 
 const InteractiveScene = dynamic(() => import('@/components/3d/interactive-scene').then(mod => mod.InteractiveScene), {
   ssr: false,
@@ -101,25 +100,21 @@ const experiences: ExperienceType[] = [
 
 export default function Home() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
-  const [isContactOpen, setContactOpen] = useState(false);
 
   const handleProjectClick = (project: Project) => {
     setSelectedProject(project);
   };
 
-  const handleContactOpen = () => {
-    setContactOpen(true);
-  }
-
   return (
     <div className="relative min-h-screen w-full bg-background font-body text-foreground">
       <InteractiveScene projects={projects} onProjectClick={handleProjectClick} />
       
-      <Header onContactClick={handleContactOpen} />
-      
       <main className="relative z-10 mt-[100vh]">
         <section id="experience" className="py-20 bg-background/80 backdrop-blur-sm">
           <Experience experiences={experiences} />
+        </section>
+        <section id="contact" className="py-20 bg-background/80 backdrop-blur-sm">
+          <ContactForm />
         </section>
       </main>
       
@@ -129,7 +124,6 @@ export default function Home() {
         onOpenChange={() => setSelectedProject(null)}
       />
       
-      <ContactDialog isOpen={isContactOpen} onOpenChange={setContactOpen} />
     </div>
   );
 }
