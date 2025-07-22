@@ -7,6 +7,7 @@ import { useState } from 'react';
 import { Mail, MessageSquare, Loader2 } from 'lucide-react';
 import { useToast } from "@/hooks/use-toast";
 import { sendEmail } from '@/lib/actions';
+import Image from 'next/image';
 
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
@@ -119,7 +120,7 @@ export function ContactForm() {
                 <p className="text-lg font-semibold">Contact me on WhatsApp</p>
                 <p className="text-muted-foreground">Scan the QR code or click the button below.</p>
                  <div className="p-4 bg-white rounded-md">
-                   <p className="text-black">QR Code Placeholder</p>
+                   <Image src="/images/whatsapp-qr.png" alt="WhatsApp QR Code" width={150} height={150} />
                 </div>
                 <Button asChild className="bg-accent text-accent-foreground hover:bg-accent/90">
                   <a href="https://wa.me/qr/6DRS3AWSMHZDJ1" target="_blank" rel="noopener noreferrer">
