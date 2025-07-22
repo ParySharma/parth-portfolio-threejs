@@ -122,7 +122,7 @@ export function ContactForm() {
                    <p className="text-black">QR Code Placeholder</p>
                 </div>
                 <Button asChild className="bg-accent text-accent-foreground hover:bg-accent/90">
-                  <a href="https://wa.me/1234567890" target="_blank" rel="noopener noreferrer">
+                  <a href="https://wa.me/qr/6DRS3AWSMHZDJ1" target="_blank" rel="noopener noreferrer">
                     Open WhatsApp
                   </a>
                 </Button>
