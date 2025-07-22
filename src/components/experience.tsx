@@ -21,7 +21,7 @@ export function Experience({ experiences }: ExperienceProps) {
             <div className="absolute -left-[42px] top-1.5 h-6 w-6 bg-accent rounded-full flex items-center justify-center ring-8 ring-background">
               <Briefcase className="w-3 h-3 text-accent-foreground" />
             </div>
-            <Card className="bg-card/50 backdrop-blur-sm border-primary/20">
+            <Card className="bg-card/50 backdrop-blur-sm border-primary/20 transition-all duration-300 hover:scale-105 hover:border-accent">
               <CardHeader>
                 <div className="flex justify-between items-start">
                   <div>
