@@ -32,7 +32,11 @@ export function Experience({ experiences }: ExperienceProps) {
                 </div>
               </CardHeader>
               <CardContent>
-                <p className="text-muted-foreground">{exp.description}</p>
+                <ul className="list-disc list-inside text-muted-foreground space-y-2">
+                  {exp.description.map((item, i) => (
+                    <li key={i}>{item}</li>
+                  ))}
+                </ul>
               </CardContent>
             </Card>
           </div>
@@ -41,5 +45,3 @@ export function Experience({ experiences }: ExperienceProps) {
     </div>
   );
 }
-
-    

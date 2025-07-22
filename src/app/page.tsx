@@ -75,16 +75,26 @@ const projects: Project[] = [
 
 const experiences: ExperienceType[] = [
   {
-    company: 'Zomo Health',
-    role: 'SDE-2 (Frontend)',
-    period: 'Oct 2023 - Present',
-    description: 'Leading frontend development for a patient-centric health management platform. Architecting and implementing features using Next.js, Material-UI, and Redux. Collaborating with cross-functional teams to deliver a seamless user experience.',
+    role: 'Web Developer',
+    company: 'Atologist Infotech',
+    period: 'Feb 2023 - Present',
+    description: [
+      'Designed and implemented interactive user interfaces for websites and applications.',
+      'Resolved cross-browser compatibility issues for consistent look across different platforms.',
+      'Collaborated with back-end developers to integrate user interface elements into applications.',
+      'Developed and maintained user-facing webpages using HTML, CSS, JavaScript and jQuery.',
+      'Developed reusable components that can be used in future projects with minimal effort.',
+    ],
   },
   {
-    company: 'Atologist Infotech',
-    role: 'React JS Developer',
-    period: 'Aug 2021 - Oct 2023',
-    description: 'Developed and maintained various client websites and internal projects using React, Next.js, and related technologies. Contributed to UI/UX design and implementation, ensuring high performance and responsiveness.',
+    role: 'Computer Teacher',
+    company: 'Shree Saraswati School',
+    period: 'Jun 2022 - Feb 2023',
+    description: [
+      'Assisted students with troubleshooting technical issues related to hardware or software usage.',
+      'Developed lectures addressing variety of computer science topics to engage and educate students.',
+      'Instructed students in the development of web-based applications using HTML, CSS, JavaScript, and PHP.',
+    ],
   },
 ];
 
