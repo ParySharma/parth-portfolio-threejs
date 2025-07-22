@@ -18,13 +18,14 @@ export function InteractiveScene({ projects, onProjectClick }: InteractiveSceneP
     if (!mountRef.current) return;
 
     const currentMount = mountRef.current;
+    const isMobile = currentMount.clientWidth < 768;
 
     // Scene
     const scene = new THREE.Scene();
 
     // Camera
     const camera = new THREE.PerspectiveCamera(75, currentMount.clientWidth / currentMount.clientHeight, 0.1, 1000);
-    camera.position.z = 10;
+    camera.position.z = isMobile ? 14 : 10;
 
     // Renderer
     const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
@@ -47,15 +48,17 @@ export function InteractiveScene({ projects, onProjectClick }: InteractiveSceneP
     // Projects
     const textureLoader = new THREE.TextureLoader();
     textureLoader.setCrossOrigin("anonymous");
-    const geometry = new THREE.PlaneGeometry(3, 2);
+    const geometry = new THREE.PlaneGeometry(isMobile ? 2.5 : 3, isMobile ? 1.67 : 2);
     projects.forEach((project, i) => {
       const texture = textureLoader.load(project.image);
       const material = new THREE.MeshStandardMaterial({ map: texture, side: THREE.DoubleSide });
       const mesh = new THREE.Mesh(geometry, material);
 
       const angle = (i / projects.length) * Math.PI * 2;
-      mesh.position.x = Math.cos(angle) * 8;
-      mesh.position.y = Math.sin(angle) * 5;
+      const radius = isMobile ? 6 : 8;
+      const yRadius = isMobile ? 4 : 5;
+      mesh.position.x = Math.cos(angle) * radius;
+      mesh.position.y = Math.sin(angle) * yRadius;
       mesh.position.z = Math.sin(angle) * Math.cos(angle) * 4 - 2;
       
       mesh.lookAt(camera.position);
@@ -66,7 +69,7 @@ export function InteractiveScene({ projects, onProjectClick }: InteractiveSceneP
     });
 
     // Particles
-    const particlesCount = 5000;
+    const particlesCount = isMobile ? 2000 : 5000;
     const posArray = new Float32Array(particlesCount * 3);
     for (let i = 0; i < particlesCount * 3; i++) {
         posArray[i] = (Math.random() - 0.5) * 50;
@@ -77,15 +80,15 @@ export function InteractiveScene({ projects, onProjectClick }: InteractiveSceneP
     const particleMesh = new THREE.Points(particlesGeometry, particlesMaterial);
     scene.add(particleMesh);
 
-    // Mouse interaction
+    // Mouse/Touch interaction
     const raycaster = new THREE.Raycaster();
-    const mouse = new THREE.Vector2();
+    const pointer = new THREE.Vector2();
 
-    const onMouseMove = (event: MouseEvent) => {
-      mouse.x = (event.clientX / currentMount.clientWidth) * 2 - 1;
-      mouse.y = -(event.clientY / currentMount.clientHeight) * 2 + 1;
+    const onPointerMove = (event: PointerEvent) => {
+      pointer.x = (event.clientX / currentMount.clientWidth) * 2 - 1;
+      pointer.y = -(event.clientY / currentMount.clientHeight) * 2 + 1;
     };
-    currentMount.addEventListener('mousemove', onMouseMove);
+    currentMount.addEventListener('pointermove', onPointerMove);
 
     const onClick = () => {
         if(hoveredObjectRef.current) {
@@ -103,12 +106,12 @@ export function InteractiveScene({ projects, onProjectClick }: InteractiveSceneP
       particleMesh.rotation.y = elapsedTime * 0.05;
 
       // Update camera
-      camera.position.x += (mouse.x * 2 - camera.position.x) * 0.02;
-      camera.position.y += (-mouse.y * 2 - camera.position.y) * 0.02;
+      camera.position.x += (pointer.x * 2 - camera.position.x) * 0.02;
+      camera.position.y += (-pointer.y * 2 - camera.position.y) * 0.02;
       camera.lookAt(scene.position);
 
       // Raycasting
-      raycaster.setFromCamera(mouse, camera);
+      raycaster.setFromCamera(pointer, camera);
       const intersects = raycaster.intersectObjects(objectsRef.current);
       
       // Handle hover
@@ -116,17 +119,14 @@ export function InteractiveScene({ projects, onProjectClick }: InteractiveSceneP
         const newHovered = intersects[0].object as THREE.Mesh;
         if(hoveredObjectRef.current !== newHovered) {
           if(hoveredObjectRef.current) {
-            (hoveredObjectRef.current.material as THREE.MeshStandardMaterial).emissive.setHex(0x000000);
-             hoveredObjectRef.current.scale.set(1,1,1);
+            hoveredObjectRef.current.scale.set(1,1,1);
           }
           hoveredObjectRef.current = newHovered;
-          (hoveredObjectRef.current.material as THREE.MeshStandardMaterial).emissive.setHex(0x000000);
           hoveredObjectRef.current.scale.set(1.1,1.1,1.1);
           document.body.style.cursor = 'pointer';
         }
       } else {
         if(hoveredObjectRef.current) {
-          (hoveredObjectRef.current.material as THREE.MeshStandardMaterial).emissive.setHex(0x000000);
           hoveredObjectRef.current.scale.set(1,1,1);
           hoveredObjectRef.current = null;
           document.body.style.cursor = 'default';
@@ -141,7 +141,9 @@ export function InteractiveScene({ projects, onProjectClick }: InteractiveSceneP
 
     // Handle resize
     const onResize = () => {
+      const isMobileNow = currentMount.clientWidth < 768;
       camera.aspect = currentMount.clientWidth / currentMount.clientHeight;
+      camera.position.z = isMobileNow ? 14 : 10;
       camera.updateProjectionMatrix();
       renderer.setSize(currentMount.clientWidth, currentMount.clientHeight);
     };
@@ -150,7 +152,7 @@ export function InteractiveScene({ projects, onProjectClick }: InteractiveSceneP
     // Cleanup
     return () => {
       window.removeEventListener('resize', onResize);
-      currentMount.removeEventListener('mousemove', onMouseMove);
+      currentMount.removeEventListener('pointermove', onPointerMove);
       currentMount.removeEventListener('click', onClick);
       document.body.style.cursor = 'default';
 
@@ -165,7 +167,7 @@ export function InteractiveScene({ projects, onProjectClick }: InteractiveSceneP
               if (Array.isArray(obj.material)) {
                   obj.material.forEach(material => material.dispose());
               } else {
-                  obj.material.dispose();
+                  (obj.material as THREE.Material).dispose();
               }
           }
       });

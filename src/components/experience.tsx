@@ -11,20 +11,20 @@ interface ExperienceProps {
 
 export function Experience({ experiences }: ExperienceProps) {
   return (
-    <div className="container mx-auto max-w-4xl">
+    <div className="container mx-auto max-w-4xl px-4">
       <h2 className="text-3xl md:text-4xl font-headline font-bold text-primary-foreground text-center mb-12">
         Work Experience
       </h2>
-      <div className="relative border-l-2 border-accent/20 pl-8 space-y-12">
+      <div className="relative border-l-2 border-accent/20 md:pl-8 space-y-12">
         {experiences.map((exp, index) => (
-          <div key={index} className="relative">
-            <div className="absolute -left-[42px] top-1.5 h-6 w-6 bg-accent rounded-full flex items-center justify-center ring-8 ring-background">
+          <div key={index} className="relative pl-8 md:pl-0">
+            <div className="absolute -left-3.5 md:-left-[42px] top-1.5 h-6 w-6 bg-accent rounded-full flex items-center justify-center ring-8 ring-background">
               <Briefcase className="w-3 h-3 text-accent-foreground" />
             </div>
             <Card className="bg-card/50 backdrop-blur-sm border-primary/20 transition-all duration-300 hover:scale-105 hover:border-accent">
               <CardHeader>
-                <div className="flex justify-between items-start">
-                  <div>
+                <div className="flex flex-col md:flex-row justify-between items-start md:items-center">
+                  <div className="mb-2 md:mb-0">
                     <CardTitle className="font-headline text-xl text-accent">{exp.role}</CardTitle>
                     <CardDescription className="text-lg font-semibold">{exp.company}</CardDescription>
                   </div>

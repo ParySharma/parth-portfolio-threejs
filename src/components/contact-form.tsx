@@ -52,7 +52,7 @@ export function ContactForm() {
   }
 
   return (
-    <div className="container mx-auto max-w-2xl">
+    <div className="container mx-auto max-w-2xl px-4">
       <Card className="bg-card/50 backdrop-blur-sm border-primary/20">
         <CardContent className="p-6">
           <div className="text-center mb-6">
@@ -115,10 +115,10 @@ export function ContactForm() {
               </Form>
             </TabsContent>
             <TabsContent value="whatsapp" className="mt-6 text-center">
-               <div className="flex flex-col items-center justify-center space-y-4 p-8 bg-background/50 rounded-lg">
+               <div className="flex flex-col items-center justify-center space-y-4 p-4 md:p-8 bg-background/50 rounded-lg">
                 <MessageSquare className="w-12 h-12 text-accent" />
                 <p className="text-lg font-semibold">Contact me on WhatsApp</p>
-                <p className="text-muted-foreground">Scan the QR code or click the button below.</p>
+                <p className="text-muted-foreground text-sm">Scan the QR code or click the button below.</p>
                  <div className="p-4 bg-white rounded-md">
                    <Image src="/images/whatsapp-qr.png" alt="WhatsApp QR Code" width={150} height={150} />
                 </div>

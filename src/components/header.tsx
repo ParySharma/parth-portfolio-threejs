@@ -3,7 +3,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { generateWelcomeMessage } from '@/ai/flows/welcome-message-flow';
-import { Sparkles } from 'lucide-react';
 
 function TypingEffect({ text, onComplete }: { text: string, onComplete: () => void }) {
   const [displayedText, setDisplayedText] = useState('');
@@ -73,9 +72,7 @@ export function Header() {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ type: 'spring', stiffness: 120, damping: 20 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-background/80 backdrop-blur-sm shadow-lg' : 'bg-transparent'
-      }`}
+      className="fixed top-0 left-0 right-0 z-50 bg-transparent"
     >
       <div className="container mx-auto flex items-center justify-between p-4">
         <div className="flex flex-col items-start">
