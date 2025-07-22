@@ -2,10 +2,38 @@
 
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import Link from 'next/link';
+import { generateWelcomeMessage } from '@/ai/flows/welcome-message-flow';
+import { Sparkles } from 'lucide-react';
+
+function TypingEffect({ text, onComplete }: { text: string, onComplete: () => void }) {
+  const [displayedText, setDisplayedText] = useState('');
+
+  useEffect(() => {
+    if (text) {
+      let i = 0;
+      setDisplayedText('');
+      const interval = setInterval(() => {
+        if (i < text.length) {
+          setDisplayedText(prev => prev + text.charAt(i));
+          i++;
+        } else {
+          clearInterval(interval);
+          onComplete();
+        }
+      }, 50);
+      return () => clearInterval(interval);
+    }
+  }, [text, onComplete]);
+
+  return <>{displayedText}</>;
+}
+
 
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [greeting, setGreeting] = useState('');
+  const [isLoading, setIsLoading] = useState(true);
+  const [isTyping, setIsTyping] = useState(true);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -13,6 +41,31 @@ export function Header() {
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  useEffect(() => {
+    const getGreeting = async () => {
+      try {
+        const date = new Date();
+        const hours = date.getHours();
+        let timeOfDay = 'evening';
+        if (hours >= 5 && hours < 12) {
+          timeOfDay = 'morning';
+        } else if (hours >= 12 && hours < 18) {
+          timeOfDay = 'afternoon';
+        }
+        
+        const result = await generateWelcomeMessage({ timeOfDay });
+        setGreeting(result.greeting);
+      } catch (error) {
+        console.error("Failed to generate welcome message:", error);
+        setGreeting("Welcome to my digital universe.");
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    getGreeting();
   }, []);
 
   const scrollToSection = (id: string) => {
@@ -32,15 +85,22 @@ export function Header() {
       }`}
     >
       <div className="container mx-auto flex items-center justify-between p-4">
-        <Link href="/" passHref>
-          <motion.div
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="text-2xl font-bold font-headline text-primary-foreground cursor-pointer"
-          >
-            Parth Sharma
-          </motion.div>
-        </Link>
+        <div className="flex flex-col items-start">
+          <div className="text-sm md:text-base font-headline font-bold text-primary-foreground drop-shadow-lg">
+            {isLoading ? (
+              <span className="animate-pulse">Loading...</span>
+            ) : (
+              isTyping ? 
+                <TypingEffect text={greeting} onComplete={() => setIsTyping(false)} /> :
+                greeting
+            )}
+            {!isTyping && <span className="text-accent animate-ping">|</span>}
+          </div>
+           <p className="flex items-center text-xs text-accent font-semibold drop-shadow-md">
+            <Sparkles className="mr-2 h-3 w-3 animate-pulse" />
+            AI-Generated Welcome
+          </p>
+        </div>
         <nav className="hidden md:flex items-center space-x-6">
           {['experience', 'skills', 'contact'].map((item) => (
             <button
