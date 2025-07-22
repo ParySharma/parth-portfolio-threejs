@@ -58,7 +58,7 @@ export function AiWelcome() {
   }, []);
 
   return (
-    <div className="absolute top-4 left-1/2 -translate-x-1/2 z-20 w-full max-w-4xl text-center px-4">
+    <div className="absolute top-12 left-1/2 -translate-x-1/2 z-20 w-full max-w-4xl text-center px-4">
       <h1 className="text-xl md:text-2xl font-headline font-bold text-primary-foreground mb-2 drop-shadow-lg">
         {isLoading ? (
           <span className="animate-pulse">Loading...</span>
