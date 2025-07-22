@@ -25,7 +25,7 @@ const projects: Project[] = [
     id: 1,
     title: 'Zomo Health - Health Management Platform',
     description: 'Developed a comprehensive health management platform for Zomo Health, designed to redefine personalized care. This application provides innovative solutions for users to manage their health, connect with professionals, and access resources, fostering a healthier and happier community.',
-    image: 'https://www.zomohealth.com/_next/image?url=%2Fimages%2Fhero%2Fabout_light.webp&w=1920&q=75',
+    image: 'https://www.zomohealth.com/images/hero/about_light.webp',
     tags: ['Next.js', 'MUI', 'Redux', 'axios', 'Firebase'],
     liveUrl: 'https://www.zomohealth.com/',
     repoUrl: '#',

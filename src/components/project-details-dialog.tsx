@@ -39,6 +39,7 @@ export function ProjectDetailsDialog({ project, isOpen, onOpenChange }: ProjectD
                 style={{ objectFit: 'cover' }}
                 className="transition-transform duration-300 hover:scale-105"
                 data-ai-hint={project.aiHint} 
+                unoptimized
              />
           </div>
           <div className="mt-4 flex flex-wrap gap-2">

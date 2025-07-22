@@ -46,6 +46,7 @@ export function InteractiveScene({ projects, onProjectClick }: InteractiveSceneP
 
     // Projects
     const textureLoader = new THREE.TextureLoader();
+    textureLoader.setCrossOrigin('anonymous');
     const geometry = new THREE.PlaneGeometry(3, 2);
     projects.forEach((project, i) => {
       const texture = textureLoader.load(project.image);
@@ -175,5 +176,3 @@ export function InteractiveScene({ projects, onProjectClick }: InteractiveSceneP
 
   return <div ref={mountRef} className="fixed inset-0 z-0" />;
 }
-
-    
