@@ -108,7 +108,7 @@ export default function Home() {
       <Header onContactClick={handleContactOpen} />
       
       <main className="relative z-10">
-        <section id="projects" className="h-screen flex items-center justify-center flex-col">
+        <section id="projects" className="h-screen flex items-center justify-center flex-col pointer-events-none">
           <div className="text-center">
             <h1 className="text-4xl md:text-6xl font-headline font-bold text-primary-foreground mb-4">My Projects</h1>
             <p className="text-lg md:text-xl text-muted-foreground">Click on the floating projects to learn more.</p>
@@ -130,5 +130,3 @@ export default function Home() {
     </div>
   );
 }
-
-    
