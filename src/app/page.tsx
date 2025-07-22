@@ -8,7 +8,6 @@ import { Loader2 as Loader } from 'lucide-react';
 import { Header } from '@/components/layout/header';
 import { ProjectDetailsDialog } from '@/components/project-details-dialog';
 import { ContactDialog } from '@/components/contact-dialog';
-import { AiPanel } from '@/components/ai-panel';
 
 const InteractiveScene = dynamic(() => import('@/components/3d/interactive-scene').then(mod => mod.InteractiveScene), {
   ssr: false,
@@ -31,16 +30,13 @@ const projects: Project[] = [
 export default function Home() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [isContactOpen, setContactOpen] = useState(false);
-  const [userInteraction, setUserInteraction] = useState<string>('User has entered the portfolio.');
 
   const handleProjectClick = (project: Project) => {
     setSelectedProject(project);
-    setUserInteraction(`User clicked on ${project.title}.`);
   };
 
   const handleContactOpen = () => {
     setContactOpen(true);
-    setUserInteraction('User opened the contact form.');
   }
 
   return (
@@ -49,10 +45,6 @@ export default function Home() {
       
       <Header onContactClick={handleContactOpen} />
       
-      <div className="absolute bottom-4 left-4 z-20">
-        <AiPanel lastInteraction={userInteraction} />
-      </div>
-
       <ProjectDetailsDialog
         project={selectedProject}
         isOpen={!!selectedProject}
