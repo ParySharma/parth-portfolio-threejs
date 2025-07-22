@@ -6,6 +6,7 @@ import * as z from 'zod';
 import { useState } from 'react';
 import { Mail, MessageSquare, Loader2 } from 'lucide-react';
 import { useToast } from "@/hooks/use-toast";
+import { sendEmail } from '@/lib/actions';
 
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
@@ -31,15 +32,22 @@ export function ContactForm() {
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     setIsSubmitting(true);
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 1500));
-    console.log(values);
+    const result = await sendEmail(values);
     setIsSubmitting(false);
-    form.reset();
-    toast({
-      title: "Message Sent!",
-      description: "Thanks for reaching out. I'll get back to you soon.",
-    });
+
+    if (result.success) {
+      form.reset();
+      toast({
+        title: "Message Sent!",
+        description: "Thanks for reaching out. I'll get back to you soon.",
+      });
+    } else {
+       toast({
+        title: "Error",
+        description: result.message,
+        variant: "destructive",
+      });
+    }
   }
 
   return (
