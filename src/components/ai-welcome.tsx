@@ -58,8 +58,8 @@ export function AiWelcome() {
   }, []);
 
   return (
-    <div className="absolute top-16 left-1/2 -translate-x-1/2 z-20 w-full max-w-4xl text-center px-4">
-      <h1 className="text-2xl md:text-3xl font-headline font-bold text-primary-foreground mb-2 drop-shadow-lg">
+    <div className="absolute top-4 left-1/2 -translate-x-1/2 z-20 w-full max-w-4xl text-center px-4">
+      <h1 className="text-xl md:text-2xl font-headline font-bold text-primary-foreground mb-2 drop-shadow-lg">
         {isLoading ? (
           <span className="animate-pulse">Loading...</span>
         ) : (
@@ -69,8 +69,8 @@ export function AiWelcome() {
         )}
         {!isTyping && <span className="text-accent animate-ping">|</span>}
       </h1>
-      <p className="flex items-center justify-center text-sm text-accent font-semibold drop-shadow-md">
-        <Sparkles className="mr-2 h-4 w-4 animate-pulse" />
+      <p className="flex items-center justify-center text-xs text-accent font-semibold drop-shadow-md">
+        <Sparkles className="mr-2 h-3 w-3 animate-pulse" />
         AI-Generated Welcome
       </p>
     </div>
