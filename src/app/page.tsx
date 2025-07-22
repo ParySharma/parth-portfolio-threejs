@@ -9,6 +9,7 @@ import { ProjectDetailsDialog } from '@/components/project-details-dialog';
 import { Experience } from '@/components/experience';
 import { ContactForm } from '@/components/contact-form';
 import { Skills } from '@/components/skills';
+import { AiWelcome } from '@/components/ai-welcome';
 
 const InteractiveScene = dynamic(() => import('@/components/3d/interactive-scene').then(mod => mod.InteractiveScene), {
   ssr: false,
@@ -117,6 +118,7 @@ export default function Home() {
   return (
     <div className="relative min-h-screen w-full bg-background font-body text-foreground">
       <InteractiveScene projects={projects} onProjectClick={handleProjectClick} />
+      <AiWelcome />
       
       <main className="relative z-10 mt-[100vh]">
         <section id="experience" className="py-20 bg-background/80 backdrop-blur-sm">
