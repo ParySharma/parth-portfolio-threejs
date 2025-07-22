@@ -114,11 +114,13 @@ export default function Home() {
             <p className="text-lg md:text-xl text-muted-foreground">Click on the floating projects to learn more.</p>
           </div>
         </section>
-        
+      </main>
+
+      <div className="relative z-10">
         <section id="experience" className="py-20 bg-background/80 backdrop-blur-sm">
           <Experience experiences={experiences} />
         </section>
-      </main>
+      </div>
       
       <ProjectDetailsDialog
         project={selectedProject}
