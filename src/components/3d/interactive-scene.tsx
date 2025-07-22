@@ -120,7 +120,7 @@ export function InteractiveScene({ projects, onProjectClick }: InteractiveSceneP
              hoveredObjectRef.current.scale.set(1,1,1);
           }
           hoveredObjectRef.current = newHovered;
-          (hoveredObjectRef.current.material as THREE.MeshStandardMaterial).emissive.setHex(0x00ffff);
+          (hoveredObjectRef.current.material as THREE.MeshStandardMaterial).emissive.setHex(0x000000);
           hoveredObjectRef.current.scale.set(1.1,1.1,1.1);
           document.body.style.cursor = 'pointer';
         }
