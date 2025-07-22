@@ -25,7 +25,7 @@ const projects: Project[] = [
     id: 1,
     title: 'Zomo Health - Health Management Platform',
     description: 'Developed a comprehensive health management platform for Zomo Health, designed to redefine personalized care. This application provides innovative solutions for users to manage their health, connect with professionals, and access resources, fostering a healthier and happier community.',
-    image: 'https://placehold.co/600x400.png',
+    image: '/images/projects/zomohealth.png',
     tags: ['Next.js', 'MUI', 'Redux', 'axios', 'Firebase'],
     liveUrl: 'https://www.zomohealth.com/',
     repoUrl: '#',
