@@ -107,7 +107,7 @@ export function ContactForm() {
                       </FormItem>
                     )}
                   />
-                  <Button type="submit" disabled={isSubmitting} className="w-full bg-primary text-primary-foreground hover:bg-primary/90 text-lg py-6">
+                  <Button type="submit" disabled={isSubmitting} className="w-full bg-accent text-accent-foreground hover:bg-accent/90 text-lg py-6">
                     {isSubmitting && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
                     Send Message
                   </Button>
