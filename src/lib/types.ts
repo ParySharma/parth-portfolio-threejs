@@ -15,3 +15,8 @@ export interface Experience {
   period: string;
   description: string[];
 }
+
+export interface Skill {
+  name: string;
+  level: number;
+}

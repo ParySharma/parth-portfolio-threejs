@@ -1,6 +1,6 @@
 "use client";
 
-import type { Project, Experience as ExperienceType } from '@/lib/types';
+import type { Project, Experience as ExperienceType, Skill } from '@/lib/types';
 import React, { useState } from 'react';
 import dynamic from 'next/dynamic';
 import { Loader2 as Loader } from 'lucide-react';
@@ -8,6 +8,7 @@ import { Loader2 as Loader } from 'lucide-react';
 import { ProjectDetailsDialog } from '@/components/project-details-dialog';
 import { Experience } from '@/components/experience';
 import { ContactForm } from '@/components/contact-form';
+import { Skills } from '@/components/skills';
 
 const InteractiveScene = dynamic(() => import('@/components/3d/interactive-scene').then(mod => mod.InteractiveScene), {
   ssr: false,
@@ -97,6 +98,14 @@ const experiences: ExperienceType[] = [
   },
 ];
 
+const skills: Skill[] = [
+  { name: 'React & Next.js', level: 95 },
+  { name: 'HTML, CSS, JavaScript', level: 90 },
+  { name: 'React Native & Expo', level: 75 },
+  { name: 'Material UI (MUI) & Bootstrap', level: 85 },
+  { name: 'WordPress & PHP', level: 70 },
+  { name: 'MySQL', level: 70 },
+];
 
 export default function Home() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
@@ -112,6 +121,9 @@ export default function Home() {
       <main className="relative z-10 mt-[100vh]">
         <section id="experience" className="py-20 bg-background/80 backdrop-blur-sm">
           <Experience experiences={experiences} />
+        </section>
+        <section id="skills" className="py-20 bg-background/80 backdrop-blur-sm">
+          <Skills skills={skills} />
         </section>
         <section id="contact" className="py-20 bg-background/80 backdrop-blur-sm">
           <ContactForm />
